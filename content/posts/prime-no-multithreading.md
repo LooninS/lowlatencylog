@@ -1,15 +1,15 @@
 +++
 title = "Calculating Number of Primes using Multithreading"
-date = 2026-06-16
+date = 2026-06-16 04:00
 description = "Understanding race condition by writing a multithreaded prime number calculator"
 tags = ["c", "pthreads", "multithreading", "concurrency", "race-condition"]
 +++
 
 In the last post, I wrote about how to create threads and problems caused by them (race conditions).
 
-In this post, I'll show how to calculate the number of primes using parallelism. The idea is simple: use an algorithm to check if a number is prime, and increment a counter if it is. Then I can run multiple threads on different ranges and calculate the number of primes in parallel.
+In this post, I'll show how to calculate the number of primes using parallelism. The idea is simple: use an algorithm to check if a number is prime, and increment a counter if it is. Then I can run multiple threads on different ranges and calculate the number of primes using multithreading.
 
-Let's look at the following code:
+Let's look at the following code
 
 ```C
 typedef struct {
@@ -81,7 +81,7 @@ Total primes: 115
 
 The correct answer is **168 primes** between 1 and 1000. Our program is way off, and the results vary. This is exactly what I discussed in the last post: **race conditions**.
 
-## What The heck is going on?
+## What the heck is going on?
 It's important to understand that each line of C code doesn't necessarily compile to a single machine instruction.
 
 For example, this simple code:
@@ -99,7 +99,7 @@ mov     eax, 0
 ```
 One line of code needed 5 instructions to complete.
 
-Our program is tiny bit more complicated than this. 
+Our program is a tiny bit more complicated than this. 
 Let's look at the following code:
 ```C
 void *primeLoop(void *arg) {
