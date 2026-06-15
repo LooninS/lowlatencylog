@@ -73,6 +73,8 @@ This is especially dangerous because of how C strings work. They're stored as nu
 - The main thread reads from that same memory location and writes the result to a file.
 - There is no mutex or other synchronization to order these accesses.
 
+It is a software bug that occurs when the outcome of the program depend on the _unpredictable_ order in which multiple thread or processes, access and modify shared resources
+
 ## What I actually observed
 
 I made a small program to demonstrate this. It writes a set of pre-determined sentences to a file. The 4 threads are writing to the same memory location that `fprintf` is reading from.
