@@ -1,9 +1,8 @@
 +++
 title = "Calculating Number of Primes using Multithreading"
 date = 2026-06-16
-draft = false
+description = "Understanding race condition by writing a multithreaded prime number calculator"
 tags = ["c", "pthreads", "multithreading", "concurrency", "race-condition"]
-categories = ["systems-programming"]
 +++
 
 In the last post, I wrote about how to create threads and problems caused by them (race conditions).
@@ -121,4 +120,4 @@ Say `counter = 10`. `thread1` successfully checks that one of its numbers is pri
 
 This is a classic data race: multiple threads write to the same variable (`counter`) without synchronization.
 
-Next post I want to talk thread synchronization and solve our annoying problem.
+The key takeaway: multithreading can make programs faster, but it introduces new problems. You need to think about what happens when multiple threads access the same data.
