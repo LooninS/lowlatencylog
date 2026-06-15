@@ -75,7 +75,8 @@ This is a **data race**:
 - The main thread reads from that same memory location and writes the result to a file.
 - There is no mutex or other synchronization to order these accesses.
 
-So a thread may write to `shared_string` at the same time as another thread is writing to it, or while the main thread is reading it. The writes can interleave in unpredictable ways, and the value of `shared_string` at any moment depends on the exact timing of thread scheduling.
+This is a race between the threads with each one is trying to write to `shared_string` before the CPU interrupts and switches to another thread.
+So a thread may write to shared_string at the same time as another thread is writing to it, or while the main thread is reading it. The writes can interleave in unpredictable ways, and the value of shared_string at any moment depends on the exact timing of thread scheduling.
 
 Note that the file writing itself is still sequential: `fprintf` is called in order by the main thread. But the **data being written** may be corrupted because `shared_string` might be partially updated when we read it.
 
@@ -92,6 +93,6 @@ ERROR 217102089: Algorithms are the bacritical in low-level system programming.
 
 The number is the line number in `shared_string.txt`. That's how rare the visible corruption is in this setup (roughly once every 100 million lines), even though the CPU performs billions of operations per second. The _probability_ of a particular bad interleaving is low, but the sheer number of operations adds up.
 
-Note: There might be some errors with `"lorem ipsum"` in the output file. That's the initial value of `shared_string`. This can happen if `fprintf()` writes to the text file before `shared_string` has been updated by any writer thread.
+Note: There might be some errors with `"lorem ipsum"` in the error file. That's the initial value of `shared_string`. This can happen if `fprintf()` writes to the text file before `shared_string` has been updated by any writer thread.
 
 Also, this can be done with a single writer thread: one thread calling `writer_function()` and the main thread calling `fprintf()` are enough to cause a data race, because they both access the same memory location (`shared_string`) without synchronization. More threads just make bad interleavings more likely, but they aren't required for a race to exist.
