@@ -1,6 +1,6 @@
 +++
 title = "Calculating Number of Primes using Multithreading"
-date = 2026-06-14
+date = 2026-06-16
 description = "Understanding race condition by writing a multithreaded prime number calculator"
 tags = ["c", "pthreads", "multithreading", "concurrency", "race-condition"]
 +++
