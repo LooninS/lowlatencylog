@@ -65,20 +65,13 @@ int main() {
 }
 ```
 
-This program creates 4 threads and runs `writer_function` in each of them.
+Now we have 4 threads all running `writer_function`, plus the main thread writing `shared_string` to a file. All threads share the same memory, so they all access the same `shared_string`.
 
-All 4 threads share the same memory space as the main process, so they all access the same `shared_string`. Each thread is trying to update `shared_string`, and the CPU can switch between them at any point. Because there is no synchronization, writes can be interrupted, and another thread (or the main thread) might read the variable while it's only partially updated. That's why unsynchronized access to shared memory is a problem.
-
-This is a **data race**:
+This is especially dangerous because of how C strings work. They're stored as null-terminated character arrays. `strncpy` copies character by character until it reaches the null terminator; it's not an atomic operation. If the CPU interrupts the copy in the middle, the string is partially updated. If another thread then reads or writes this location, it's working with undefined data. This is what we call a **data race**:
 
 - Multiple threads write to the same memory location (`shared_string`).
 - The main thread reads from that same memory location and writes the result to a file.
 - There is no mutex or other synchronization to order these accesses.
-
-This is a race between the threads with each one is trying to write to `shared_string` before the CPU interrupts and switches to another thread.
-So a thread may write to shared_string at the same time as another thread is writing to it, or while the main thread is reading it. The writes can interleave in unpredictable ways, and the value of shared_string at any moment depends on the exact timing of thread scheduling.
-
-Note that the file writing itself is still sequential: `fprintf` is called in order by the main thread. But the **data being written** may be corrupted because `shared_string` might be partially updated when we read it.
 
 ## What I actually observed
 
@@ -96,3 +89,5 @@ The number is the line number in `shared_string.txt`. That's how rare the visibl
 Note: There might be some errors with `"lorem ipsum"` in the error file. That's the initial value of `shared_string`. This can happen if `fprintf()` writes to the text file before `shared_string` has been updated by any writer thread.
 
 Also, this can be done with a single writer thread: one thread calling `writer_function()` and the main thread calling `fprintf()` are enough to cause a data race, because they both access the same memory location (`shared_string`) without synchronization. More threads just make bad interleavings more likely, but they aren't required for a race to exist.
+
+
