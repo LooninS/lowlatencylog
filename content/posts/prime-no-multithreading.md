@@ -1,7 +1,7 @@
 +++
 title = "Calculating Number of Primes using Multithreading"
 date = 2026-06-16
-draft = true
+draft = false
 tags = ["c", "pthreads", "multithreading", "concurrency", "race-condition"]
 categories = ["systems-programming"]
 +++
