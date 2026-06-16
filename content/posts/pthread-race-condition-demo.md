@@ -100,4 +100,4 @@ The number is the line number in `shared_string.txt`. That's how rare the visibl
 
 Also, this can be done with a single writer thread: one thread calling `writer_function()` and the main thread calling `fprintf()` are enough to cause a data race, because they both access the same memory location (`shared_string`) without synchronization. More threads just make bad interleavings more likely, but they aren't required for a race to exist.
 
-
+Source code on GitHub: [View on GitHub](https://github.com/LooninS/thread_race_condition_demo)
