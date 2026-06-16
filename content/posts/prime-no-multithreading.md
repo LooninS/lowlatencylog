@@ -7,7 +7,7 @@ tags = ["c", "pthreads", "multithreading", "concurrency", "race-condition"]
 
 In the last post, I wrote about how to create threads and problems caused by them (race conditions).
 
-In this post, I'll show how to calculate the number of primes using parallelism. The idea is simple: use an algorithm to check if a number is prime, and increment a counter if it is. Then I can run multiple threads on different ranges and calculate the number of primes using multithreading.
+In this post, I'll show how to calculate the number of primes using multithreading. The idea is simple: use an algorithm to check if a number is prime, and increment a counter if it is. Then I can run multiple threads on different ranges and calculate the number of primes using multithreading.
 
 Let's look at the following code
 
