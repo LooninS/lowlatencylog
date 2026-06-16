@@ -57,6 +57,12 @@ int main() {
     pthread_create(&thread2, NULL, primeLoop, &r2);
     pthread_create(&thread3, NULL, primeLoop, &r3);
     pthread_create(&thread4, NULL, primeLoop, &r4);
+    
+    // Wait for all threads to finish
+    pthread_join(thread1, NULL);
+    pthread_join(thread2, NULL);
+    pthread_join(thread3, NULL);
+    pthread_join(thread4, NULL);
 
     printf("Total primes: %d\n", counter);
     return 0;

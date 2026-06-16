@@ -51,6 +51,7 @@ Now let's look at what happens when we create multiple threads.
 int main() {
   pthread_t writer_thread_1, writer_thread_2, writer_thread_3, writer_thread_4;
 
+  // Create 4 threads
   pthread_create(&writer_thread_1, NULL, writer_function, NULL);
   pthread_create(&writer_thread_2, NULL, writer_function, NULL);
   pthread_create(&writer_thread_3, NULL, writer_function, NULL);
@@ -60,12 +61,21 @@ int main() {
   for (long k = 0; k < 250000000; k++) {
     fprintf(fp, "%s\n", shared_string);
   }
+
+  // Close the file
   fclose(fp);
+
+  // Wait for all threads to finish
+  pthread_join(writer_thread_1, NULL);
+  pthread_join(writer_thread_2, NULL);
+  pthread_join(writer_thread_3, NULL);
+  pthread_join(writer_thread_4, NULL);
+
   return 0;
 }
 ```
 
-Now we have 4 threads all running `writer_function`, plus the main thread writing `shared_string` to a file. All threads share the same memory, so they all access the same `shared_string`.
+Now we have 4 threads all running `writer_function`, plus the main thread writing `shared_string` to a file. All threads share the same memory, so they all access the same `shared_string`. There are a total of 5 threads running(1 main + 4 writer)
 
 This is especially dangerous because of how C strings work. They're stored as null-terminated character arrays. `strncpy` copies character by character until it reaches the null terminator; it's not an atomic operation. If the CPU interrupts the copy in the middle, the string is partially updated. If another thread then reads or writes this location, it's working with undefined data. This is what we call a **data race**:
 
