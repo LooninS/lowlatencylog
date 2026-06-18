@@ -1,4 +1,4 @@
-+++
++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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++
 title = "Thread Synchronization"
 date = 2026-06-18
 description = "How hardware makes working with threads less of a nightmare"
