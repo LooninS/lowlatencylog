@@ -17,7 +17,7 @@ typedef struct {
   int end;
 } Range;
 
-int counter = 0;
+volatile int counter = 0;
 
 bool isPrime(int n) {
     if (n <= 1) return false;
@@ -118,12 +118,77 @@ void *primeLoop(void *arg) {
     return NULL;
 }
 ```
-Every line here translates into multiple machine instructions, and the CPU can interrupt execution at any point and switch to another thread.
 
-Say `counter = 10`. `thread1` successfully checks that one of its numbers is prime, but the CPU interrupts `thread1` **before** `counter++` completes. The other threads run normally and update the counter 4 times, so `counter` becomes 14. When `thread1` resumes, it reads the old value (10), increments it, and writes back 11. So we **lost** 3 updates.
+## The Data Race: Step-by-Step
 
-> Note: The CPU saves a thread's state when it's interrupted so it can resume from the exact point. This is why `thread1` still "thinks" `counter` is 10 even though it changed in the meantime.
+Every line here translates into **multiple machine instructions**, and the CPU can interrupt execution at any point and switch to another thread.
 
-This is a classic data race: multiple threads write to the same variable (`counter`) without synchronization.
+### What Happens During `counter++`
+
+```c
+volatile int counter = 10;
+counter++;  // NOT atomic
+```
+
+This expands to **3 assembly instructions**:
+
+```asm
+; counter++ = load → add → store
+mov eax, [counter]    ; 1. LOAD counter from memory (eax = 10)
+add eax, 1            ; 2. ADD 1 to register (eax = 11)
+mov [counter], eax    ; 3. STORE back to memory (counter = 11)
+```
+
+**The CPU can interrupt between ANY of these steps!**
+
+***
+
+### The Lost Update Scenario
+
+Let's trace what happens when `counter = 10`:
+
+| Time | Thread 1 | Thread 2 | Thread 3 | Thread 4 | `counter` |
+|------|----------|----------|----------|----------|-----------|
+| t1 | `LOAD counter` (eax=10) | | | | 10 |
+| t2 | `add eax, 1` (eax=11) | | | | 10 |
+| t3 | **INTERRUPTED** | `LOAD counter` (ebx=10) | | | 10 |
+| t4 | | `add ebx, 1` (ebx=11) | | | 10 |
+| t5 | | `STORE counter` (11) | `LOAD counter` (ecx=11) | | 11 |
+| t6 | | | `add ecx, 1` (ecx=12) | | 11 |
+| t7 | | | `STORE counter` (12) | `LOAD counter` (edx=12) | 12 |
+| t8 | | | | `add edx, 1` (edx=13) | 12 |
+| t9 | | | | `STORE counter` (13) | `LOAD counter` (eax=10) | 13 |
+| t10| | | | | `eax=10` (old!) |
+| t11| **RESUMES** `STORE counter` (11) | | | | **11** ← **LOST 3 UPDATES!** |
+
+**Final counter:** `11`  
+**Expected counter:** `14` (10 + 4 primes)  
+**Lost:** `3 updates`
+
+***
+
+### Why This Happens
+
+> **Note:** The CPU saves a thread's state when interrupted so it can resume from the exact point. This is why `thread1` still "thinks" `counter` is `10` even though it changed to `13` in the meantime.
+
+```c
+// Thread 1's register state when interrupted:
+eax = 10  // Old value loaded BEFORE interruption
+
+// Meanwhile, counter in memory:
+counter = 13  // Updated by threads 2, 3, 4
+
+// When Thread 1 resumes:
+mov [counter], eax  // Writes 11, overwriting 13
+```
+
+***
+### Root Cause
+This is a classic **data race**:
+
+| Problem | Explanation |
+|---------|-------------|
+| **Multiple threads** | 4 threads writing to `counter` simultaneously |
+| **Same variable** | All threads access `volatile int counter` |
 
 The key takeaway: multithreading can make programs faster, but it introduces new problems. You need to think about what happens when multiple threads access the same data.
