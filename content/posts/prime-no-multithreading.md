@@ -1,17 +1,24 @@
 +++
 title = "Calculating Number of Primes using Multithreading"
 date = 2026-06-16
-description = "Understanding race condition by writing a multithreaded prime number calculator"
+description = "Understanding race conditions by writing a multithreaded prime number calculator"
 tags = ["c", "pthreads", "multithreading", "concurrency", "race-condition"]
 +++
 
 In the last post, I wrote about how to create threads and problems caused by them (race conditions).
 
-In this post, I'll show how to calculate the number of primes using multithreading. The idea is simple: use an algorithm to check if a number is prime, and increment a counter if it is. Then I can run multiple threads on different ranges and calculate the number of primes using multithreading.
+In this post, I'll show how to calculate the number of primes using multithreading. The idea is simple:
 
-Let's look at the following code
+1. Use an algorithm to check if a number is prime
+2. Increment a counter if it is
+3. Run multiple threads on different ranges
+4. Sum up the total primes
 
-```C
+Let's look at the code.
+
+## The Code
+
+```c
 typedef struct {
   int start;
   int end;
@@ -30,21 +37,22 @@ bool isPrime(int n) {
     return true;
 }
 
-
 void *primeLoop(void *arg) {
     Range *r = (Range *)arg;
     for (int i = r->start; i < r->end; i++) {
         if (isPrime(i)) {
-            counter++;
+            counter++;  // <-- BUG: Not atomic!
         }
     }
     return NULL;
 }
 ```
+
 The `isPrime` function checks if a number is prime, and `primeLoop` increments the global `counter` for each prime it finds in its range.
 
-Now let's create a thread for each range and pass the range as an argument to the thread function
-```C
+Now let's create threads for each range:
+
+```c
 int main() {
     pthread_t thread1, thread2, thread3, thread4;
 
@@ -67,73 +75,56 @@ int main() {
     printf("Total primes: %d\n", counter);
     return 0;
 }
-
 ```
-However, running this code gives different results each time:
-```bash
 
-~ via C v16.1.1-gcc on ☁️   
-❯ ./prime 
+## Guessing might be better
+However, running this code gives **different results each time**:
+
+```bash
+❯ ./prime
 Total primes: 132
 
-~ via C v16.1.1-gcc on ☁️   
 ❯ ./prime
 Total primes: 95
 
-~ via C v16.1.1-gcc on ☁️   
 ❯ ./prime
 Total primes: 115
 ```
 
 The correct answer is **168 primes** between 1 and 1000. Our program is way off, and the results vary. This is exactly what I discussed in the last post: **race conditions**.
 
-## What the heck is going on?
+## What the Heck Is Going On?
+
+### Non-Atomic Operations
+
 It's important to understand that each line of C code doesn't necessarily compile to a single machine instruction.
 
-For example, this simple code:
-```C
+For example:
+```c
 a = b + c;
 ```
-Simple right? All we are doing is adding two variables together and assigning the result to another variable.
-However, the compiler might translate this to something like:
+
+Simple right? We're just adding two variables and assigning the result. But the compiler might translate this to:
+
 ```asm
-mov     edx, DWORD PTR [rbp-4]
-mov     eax, DWORD PTR [rbp-8]
-add     eax, edx
-mov     DWORD PTR [rbp-12], eax
-mov     eax, 0
-```
-One line of code needed 5 instructions to complete.
-
-Our program is a tiny bit more complicated than this. 
-Let's look at the following code:
-```C
-void *primeLoop(void *arg) {
-    Range *r = (Range *)arg;
-    for (int i = r->start; i < r->end; i++) {
-        if (isPrime(i)) {
-            counter++;
-        }
-    }
-    return NULL;
-}
+mov     edx, DWORD PTR [rbp-4]   ; load b
+mov     eax, DWORD PTR [rbp-8]   ; load c
+add     eax, edx                  ; add them
+mov     DWORD PTR [rbp-12], eax  ; store to a
+mov     eax, 0                    ; return 0
 ```
 
-## The Data Race: Step-by-Step
+One line of code = **5 instructions**.
 
-Every line here translates into **multiple machine instructions**, and the CPU can interrupt execution at any point and switch to another thread.
-
-### What Happens During `counter++`
-
+The counter could be increment is not an atomic operation.
 ```c
 volatile int counter = 10;
-counter++;  // NOT atomic
+counter++;  // NOT atomic!
 ```
-
 This expands to **3 assembly instructions**:
 
 ```asm
-; counter++ = load → add → store
+; counter++ = LOAD → ADD → STORE
 mov eax, [counter]    ; 1. LOAD counter from memory (eax = 10)
 add eax, 1            ; 2. ADD 1 to register (eax = 11)
 mov [counter], eax    ; 3. STORE back to memory (counter = 11)
@@ -141,9 +132,10 @@ mov [counter], eax    ; 3. STORE back to memory (counter = 11)
 
 **The CPU can interrupt between ANY of these steps!**
 
-***
+---
 
-### The Lost Update Scenario
+
+### What can go wrong?
 
 Let's trace what happens when `counter = 10`:
 
@@ -151,44 +143,35 @@ Let's trace what happens when `counter = 10`:
 |------|----------|----------|----------|----------|-----------|
 | t1 | `LOAD counter` (eax=10) | | | | 10 |
 | t2 | `add eax, 1` (eax=11) | | | | 10 |
-| t3 | **INTERRUPTED** | `LOAD counter` (ebx=10) | | | 10 |
+| t3 | **STOP** | `LOAD counter` (ebx=10) | | | 10 |
 | t4 | | `add ebx, 1` (ebx=11) | | | 10 |
 | t5 | | `STORE counter` (11) | `LOAD counter` (ecx=11) | | 11 |
 | t6 | | | `add ecx, 1` (ecx=12) | | 11 |
 | t7 | | | `STORE counter` (12) | `LOAD counter` (edx=12) | 12 |
 | t8 | | | | `add edx, 1` (edx=13) | 12 |
 | t9 | | | | `STORE counter` (13) | `LOAD counter` (eax=10) | 13 |
-| t10| | | | | `eax=10` (old!) |
-| t11| **RESUMES** `STORE counter` (11) | | | | **11** ← **LOST 3 UPDATES!** |
+| t10 | | | | | `eax=10` (old!) |
+| t11 | **GO** `STORE counter` (11) | | | | **11** ← **LOST 3 UPDATES!** |
 
-**Final counter:** `11`  
-**Expected counter:** `14` (10 + 4 primes)  
-**Lost:** `3 updates`
-
-***
-
-### Why This Happens
+| Metric | Value |
+|--------|-------|
+| Final counter | `11` |
+| Expected counter | `14` (10 + 4 primes) |
+| Lost updates | `3` |
 
 > **Note:** The CPU saves a thread's state when interrupted so it can resume from the exact point. This is why `thread1` still "thinks" `counter` is `10` even though it changed to `13` in the meantime.
 
-```c
-// Thread 1's register state when interrupted:
-eax = 10  // Old value loaded BEFORE interruption
-
-// Meanwhile, counter in memory:
-counter = 13  // Updated by threads 2, 3, 4
-
-// When Thread 1 resumes:
-mov [counter], eax  // Writes 11, overwriting 13
-```
-
-***
-### Root Cause
-This is a classic **data race**:
+This is what a race condition looks like:
 
 | Problem | Explanation |
 |---------|-------------|
 | **Multiple threads** | 4 threads writing to `counter` simultaneously |
 | **Same variable** | All threads access `volatile int counter` |
+| **No synchronization** | No mutex, no atomic, no barrier |
+| **Non-atomic operation** | `counter++` = 3 instructions, not 1 |
 
-The key takeaway: multithreading can make programs faster, but it introduces new problems. You need to think about what happens when multiple threads access the same data.
+## Key Takeaway
+
+Multithreading can make programs faster, but it introduces new problems. You need to think about what happens when multiple threads access the same data.
+
+
