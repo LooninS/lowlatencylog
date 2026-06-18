@@ -122,26 +122,6 @@ while (flag[j] && turn == j);  // Wait if other wants entry AND has priority
 flag[i] = false;    // I'm done
 ```
 
-```mermaid
-sequenceDiagram
-    participant T0 as Thread 0
-    participant T1 as Thread 1
-    participant S as Shared state
-
-    T0->>S: flag0 = true
-    T0->>S: turn = 1
-
-    T1->>S: flag1 = true
-    T1->>S: turn = 0
-
-    T0->>S: check flag1 and turn
-    T1->>S: check flag0 and turn
-
-    Note over T0,T1: One thread enters, the other waits
-
-    T0->>S: enter critical section
-    T0->>S: flag0 = false
-```
 By setting `turn = j` first, each thread gives priority to the other. If both want to enter, the one who set `turn` last will wait, ensuring only one enters.
 
 ## Optimizations

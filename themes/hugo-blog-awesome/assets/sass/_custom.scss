@@ -1,11 +1,32 @@
-.diagram-container {
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 20px 0;
-  font-family: "Courier New", monospace;
-  font-size: 14px;
-  line-height: 1.5;
+.casm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  align-items: start;
+}
+
+.casm__pane {
+  min-width: 0;
+}
+
+.casm__title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.casm .highlight {
+  margin: 0;
+}
+
+.casm .highlight pre {
   overflow-x: auto;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+  .casm {
+    grid-template-columns: 1fr;
+  }
 }
