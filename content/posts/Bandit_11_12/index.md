@@ -1,8 +1,8 @@
 ---
-tile: Bandit Level 11 → Level 12
+title: Bandit 11 → 12
 date: 2026-06-18
-tags: [bandit, linux, otw, walkthrough]
-desc: Walkthrough for bandit 11 to 12
+desc: walkthrough of bandit 11 → 12
+tags: [bandit, walkthrough,linux]
 ---
 # Bandit 11 → 12
 ## Login
