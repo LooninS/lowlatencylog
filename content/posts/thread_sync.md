@@ -65,7 +65,6 @@ For our case, we have **TAS** and **CAS**: **TEST AND SET** and **COMPARE AND SW
 #### TEST AND SET
 
 ```c
-// Software version (NOT atomic!)
 bool test_and_set(bool *flag) {
     bool rv = *flag;
     *flag = true;
@@ -75,7 +74,7 @@ bool test_and_set(bool *flag) {
 
 This function normally compiles to **multiple instructions**, but the CPU provides an **atomic version** that performs the entire operation in one step, eliminating the possibility of being interrupted mid-way.
 
-The function won't automatically compile to one instruction — instead, the CPU implements the same behavior atomically.
+It doesn't actually compile to single instruction, rather CPU at asm level implements the same behavior atomically.
 
 In practice, we write an inline asm wrapper to invoke the hardware instruction:
 
