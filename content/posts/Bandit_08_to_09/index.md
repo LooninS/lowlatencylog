@@ -5,6 +5,10 @@ tags: [bandit, linux, OTW, walkthrough]
 description: The password for the next level is stored in the file data.txt and is the only line of text that occurs only once.
 ---
 # Bandit Level 8 → Level 9
+login
+ssh: ssh bandit8@bandit.labs.overthewire.org -p 2220
+password: `dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc`
+***
 ## Level Goal
 The password for the next level is stored in the file data.txt and is the only line of text that occurs only once.
 ***

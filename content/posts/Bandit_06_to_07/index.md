@@ -7,6 +7,7 @@ description: the password for the next level is stored somewhere on the server a
 # bandit level 6 → level 7
 ## login
 ssh: ssh bandit6@bandit.labs.overthewire.org -p 2220
+password: `HWasnPhtq9AVKe0dmk45nxy20cvUa6EG`
 ***
 ## level goal
 the password for the next level is stored somewhere on the server and has all of the following properties:
