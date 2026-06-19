@@ -1,3 +1,9 @@
+---
+title: Bandit 12 to 13
+date: 2026-06-18
+tags: [bandit, linux, reverse engineering, scripting]
+desc: automating the process of solving bandit 12 to 13
+---
 # Bandit 12 to 13
 
 ## Login

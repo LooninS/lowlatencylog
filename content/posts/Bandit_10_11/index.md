@@ -1,8 +1,8 @@
 ---
 title: Bandit Level 10 → Level 11
-date: 2026-06-19
+date: 2026-06-18
 tags: [bandit, linux, otw, walkthrough]
-desc: 
+desc: Walkthrough for bandit 10 to 11
 
 ---
 # Bandit Level 9 → Level 10
