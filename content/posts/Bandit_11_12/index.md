@@ -4,8 +4,7 @@ date: 2026-06-18
 tags: [bandit, linux, otw, walkthrough]
 desc: Walkthrough for bandit 11 to 12
 ---
-# Bandit 11 to 12
-
+# Bandit 11 → 12
 ## Login
 - SSH: `ssh bandit11@bandit.labs.overthewire.org -p 2220`
 - Password: `dtR173fZKb0RRsDFSGsg3RWnpNVj3qRr`
