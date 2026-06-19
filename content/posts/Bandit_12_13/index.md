@@ -95,6 +95,6 @@ rm -rf "$WORKDIR"
 >/tmp/bandit_12.sh
 >```
 ***
-[Bandit 13 to 14](../../posts/bandit_13_to_14/)
+[Bandit 13 to 14](../../posts/bandit_13_14/)
 
 
