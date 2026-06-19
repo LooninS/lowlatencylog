@@ -18,4 +18,4 @@ Generally a good to know if a file is base64 encoded is to look if it ends with 
 base64 -d data.txt
 ```
 ---
-[next level](../../posts/Bandit_11_12)
+[next level](../../posts/bandit_11_12/)
