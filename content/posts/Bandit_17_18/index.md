@@ -10,9 +10,7 @@ There are 2 files in the homedirectory: passwords.old and passwords.new. The pas
 
 NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19
 ***
-
 ## Solution
-
 The solution is to use the `diff` command to compare the 2 files:
 
 ```bash

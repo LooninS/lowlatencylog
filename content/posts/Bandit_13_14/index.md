@@ -4,6 +4,7 @@ description = "Walkthrough for Bandit 13 to 14"
 date = 2026-06-19
 tags = ["linux","bandit","walkthrough","otw"]
 +++
+[<<< previous level](../../posts/bandit_12_13)
 
 ### Login
 ssh: `ssh bandit13@bandit.labs.overthewire.org`

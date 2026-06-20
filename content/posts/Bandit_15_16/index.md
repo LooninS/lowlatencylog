@@ -4,6 +4,7 @@ description = "Walkthrough of the Bandit 15 → 16 challenge"
 date = 2026-06-19
 tags = ["bandit", "walkthrough", "linux", "otw"]
 +++
+[previous level <<<](../../posts/bandit_14_15)
 
 ### Level Goal
 The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL/TLS encryption.
@@ -28,4 +29,3 @@ The `-quiet` flag suppresses SSL handshake noise so you only see the server's re
 
 [next level >>>](../../posts/bandit_16_17)
 
-[previous level <<<](../../posts/bandit_14_15)

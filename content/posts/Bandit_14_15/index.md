@@ -5,6 +5,8 @@ date = 2026-06-19
 tags = ["bandit", "walkthrough", "linux", "otw"]
 +++
 
+[<<< previous level](../../posts/bandit_13_14)
+
 ### Level Goal
 The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
 
