@@ -35,7 +35,7 @@ for i in {0000..9999}; do
 done| nc localhost 30002 
 ```
 
-let the script run till you get the password:
+let the script till it runs out of pincodes:
 ```bash
 bandit24@bandit:~$ /tmp/brute.sh
 t current password and pincode. Try again.
@@ -78,4 +78,3 @@ The password of user bandit25 is <password>
 With this we have our password for bandit25.
 ***
 [Next level](../../posts/bandit_25_26)
-
