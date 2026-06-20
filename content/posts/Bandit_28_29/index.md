@@ -153,6 +153,7 @@ So in this commit, the real password was added. A later commit (`fix info leak`)
 
 The `<password>` in that diff is the password for `bandit29`.
 ***
-**Git never forgets unless you rewrite history explicitly, so secrets committed once can usually be recovered from the history.**
+>[!info] **Git never forgets by default.**
+>Unless you explicitly rewrite history (e.g., with git filter-branch or git filter-repo), anything you commit (including secrets) can usually be recovered from the log. 
 ***
 [next level](../../posts/bandit_29_30)
