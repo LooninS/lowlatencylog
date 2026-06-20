@@ -10,8 +10,7 @@ tags = ["bandit", "walkthrough", "linux", "otw", "git"]
 ## Login Details
 
 **Password:** `4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7`
-
----
+***
 
 ## Level Goal
 
@@ -19,10 +18,8 @@ There is a git repository at
 `ssh://bandit29-git@bandit.labs.overthewire.org/home/bandit29-git/repo`
 via port `2220`.  
 The password for `bandit29-git` is the same as for the user `bandit29`.
-
 From your **local machine** (as the level text suggests) you’re supposed to clone this repository and find the password for the next level. In practice you can also do these git commands directly on the Bandit box as long as `git` is installed.
-
----
+***
 
 Start by cloning the repository. The password for the git account is the current level’s password.
 
