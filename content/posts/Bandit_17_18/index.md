@@ -1,8 +1,8 @@
 +++
 title = "Bandit 17 → 18"
 date = 2026-06-19
-description = "There are 2 files in the home directory: passwords.old and passwords.new.
-tags = ["bandit", "linux", "", "otw", "walkthrough"]
+description = "There are 2 files in the home directory: passwords.old and passwords.new."
+tags = ["bandit", "linux", "otw", "walkthrough"]
 +++
 
 ## Level Goal
