@@ -26,4 +26,5 @@ The second line of the output of `diff` is the line that has been changed betwee
 ***
 
 [Back to Bandit 16 → 17](../post/Bandit_16_17)
+
 [On to Bandit 18 → 19](../post/Bandit_18_19)
