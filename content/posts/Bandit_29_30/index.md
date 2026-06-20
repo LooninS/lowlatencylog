@@ -65,9 +65,7 @@ Date:   Sun Jun 14 ...
 ```
 
 So `HEAD -> master` tells us our working copy is on `master` – the production branch.
-
----
-“No passwords in production” strongly suggests we should look at **other branches**.
+“No passwords in production” basically screams: go hunt other branches.
 
 ```bash
 $ git branch -a

@@ -37,24 +37,37 @@ cat README.md
 ─────┴──────────────────────────────────────────────────────────────────
 ```
 
-The task this time is to create a file called `key.txt` with the content `May I come in?` and push it to the remote repository.
+So this level flips the usual pattern. Instead of pulling secrets, we need to push something valid to the remote.
+
+create file:
 
 ```bash
+echo "May I come in?" > key.txt
+```
+```bash
+Tried adding it:
 git add key.txt
 The following paths are ignored by one of your .gitignore files:
 key.txt
 hint: Use -f if you really want to add them.
 hint: Disable this message with "git config set advice.addIgnoredFile false"
 ```
-Well then let's add the file with the `-f` flag, commit and push it.
+So key.txt is explicitly ignored. That’s the actual obstacle here—not Git itself, but the repository configuration.
+
+Checked `.gitignore`, and sure enough, the all `.txt` files are being filtered out.
+
+At this point, there are two options:
+
++ Modify .gitignore (messy, unnecessary)
++ Force-add the file
 
 ```bash
 git add -f key.txt
 git commit -m "added key.txt"
-git push 
+git push
 ```
 
-Pushing it to remote remote repository will require the password for the user `bandit31-git`.
+On push, it asks for the password for bandit31-git (same as bandit31). After authentication, the remote validates the commit and returns the password for the next level.
 
 After entering the password, we get the password needed for the next level.
 ***

@@ -17,17 +17,25 @@ Check the README.md
 cat README.md
 just an epmty file... muahaha
 ```
-That's seem to be....right. This truly is an empty file. There are no previous commits with leak or some other branch with the password. So, are we stump? Not quite. Git stores everything, so if the password was here we can find it. 
+At first glance, nothing useful. No commits leaking data, no extra branches.
 
-Git tags are used to mark specific commits in the repository, typically to identify releases or important milestones and unlike branches they don't move.
+So if it’s not in the working tree, the next step is to think about what Git stores beyond files.
 
-Let's check the tags
+Git doesn’t just track the latest state. It keeps all objects: commits, trees, blobs, references.
+
+Branches are one way to reference commits. But they’re not the only one.
+
+Checked for tags:
 ```bash
 git tag
 secret
 ```
 
-We can see that there is a tag called secret. Let's checkout to that tag
+That’s interesting.
+
+Tags are just pointers to specific commits, usually used for marking releases. Unlike branches, they don’t move. If something was hidden intentionally, a tag is a clean place to stash it.
+
+
 ```bash
 git show secret
 <password>
@@ -35,9 +43,12 @@ git show secret
 
 That's the password.
 ***
->[!info]
-> Marks important points (releases like v1.0, milestones
-> Tags don't move — unlike branches, they stay fixed to one commit 
->You can use `git show <tagname>` to see what it contains 
+>[!info] 
+>The trick here is realizing that “nothing in the repo” doesn’t mean “nothing in Git.”
+> The working directory is just one view. Git’s object store can contain data that isn’t visible through:
+> + current files
+> + commit history you casually browse
+> + branches
+>Tags are easy to overlook because they’re used less frequently in basic workflows.
 ***
 [Bandit 31-32>>](../../posts/bandit_31_32)
