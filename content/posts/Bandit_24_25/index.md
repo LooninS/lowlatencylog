@@ -5,6 +5,7 @@ description = "walkthrough of the Bandit 24 → 25"
 tags = ["bandit", "walkthrough", "linux", "otw"]
 +++
 [previous level](../../posts/bandit_23_24)
+
 ### Login
 ssh: `ssh -p 2220 bandit24@bandit.labs.overthewire.org`
 pass: `gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8`
