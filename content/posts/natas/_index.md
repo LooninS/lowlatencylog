@@ -1,8 +1,8 @@
 +++
-title: "Natas"
-description: "A devlog of me solving the Natas web security wargame level by level."
-summary: "Level-by-level notes, dead ends, observations, and solutions from my Natas practice."
-date: 2026-06-21
+title = "Natas"
+description = "A devlog of me solving the Natas web security wargame level by level."
+summary = "Level-by-level notes, dead ends, observations, and solutions from my Natas practice."
+date = 2026-06-21
 +++
 This section is my running devlog for the **Natas** wargame.
 
