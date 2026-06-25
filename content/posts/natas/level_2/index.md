@@ -15,7 +15,7 @@ tags = ["otw", "natas", "file-exposure", "directory-exposure"]
 
 When looking through the HTML, I found there is an image stored at `./files/pixel.png`:
 
-![Pixel.png reference in the HTML](image.png)
+![Pixel.png reference in the HTML](./image.png)
 
 With this, I checked out the PNG by visiting:  
 `http://natas2.natas.labs.overthewire.org/files/pixel.png`
@@ -23,11 +23,11 @@ With this, I checked out the PNG by visiting:
 This wasn't particularly useful, so I checked what was at:  
 `http://natas2.natas.labs.overthewire.org/files`
 
-![Directory listing at /files](image 2.png)
+![Directory listing at /files](./image2.png)
 
 I wondered what was hiding in `user.txt`:
 
-![Contents of users.txt](image 3.png)
+![Contents of users.txt](./image3.png)
 
 With that, I got the password for the next level.
 
