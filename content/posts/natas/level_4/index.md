@@ -86,3 +86,4 @@ curl 'http://natas4.natas.labs.overthewire.org/index.php' \
 
 Here, the crucial part is the forged `Referer` header; the `Authorization` header is kept identical to what the browser originally sent, so the server still recognizes the Natas 4 credentials.
 ***
+[next level](../../natas/level_5/)
