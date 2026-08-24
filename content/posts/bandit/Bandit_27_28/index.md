@@ -28,5 +28,5 @@ cd repo
 cat README
 ```
 ***
-[next level](../../posts/Bandit/bandit_28_29)  
+[next level](../../posts/bandit/bandit_28_29) 
 

@@ -4,8 +4,6 @@ date = 2026-06-19
 description = "Level 32 → Level 33"
 tags = ["bandit", "otw", "linux", "walkthrough"]
 +++
-[<< Bandit 31-32](../../posts/Bandit/bandit_31_32)
-
 ### Login 
 ssh: ssh bandit32@bandit.labs.overthewire.org -p 2220
 password: `3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K`
@@ -45,9 +43,7 @@ That means normal commands are useless. Need something that either:
 + doesn’t break when uppercased, or
 + bypasses the shell entirely
 
-The second option feels more promising.
-
-In most shells, `$0` refers to the current shell executable. If I can invoke it directly, I might escape whatever wrapper this “uppercase shell” is using.
+In most shells, `$0` refers to the current shell executable. If I can invoke it directly, I might escape whatever wrapper this “uppercase shell” is using. It also 
 
 ```bash
 >> $0
@@ -69,7 +65,7 @@ $ cat /etc/bandit_pass/bandit33
 > [!tip] quick tip
 >The shell isn’t restricting execution directly. It’s transforming input. That’s a weaker guarantee than it looks. Instead of blocking behavior, it relies on a naive assumption: that changing case breaks everything.
 
->But environment variables like $0 bypass that assumption entirely.
+>But environment variables like $0 bypass that assumption entirely. The shell can't break it either because it's not based on the lower/upper cas
 
 >This level is a good reminder:
 >If input is modified but not controlled, look for things that survive the transformation.

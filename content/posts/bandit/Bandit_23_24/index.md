@@ -4,8 +4,6 @@ date = 2026-06-19
 description = "walkthrough of the Bandit 23 → 24"
 tags = ["bandit", "walkthrough", "linux", "otw"]
 +++
-[previous level](../../posts/Bandit/bandit_22_23)
-
 ### Login
 ssh: `ssh -p 2220 bandit23@bandit.labs.overthewire.org`
 pass: `0Zf11ioIjMVN551jX3CmStKLYqjk54Ga`
@@ -112,4 +110,4 @@ bandit23@bandit:/tmp/tmp.YgfQrYCjYF$ cat /tmp/tmp.YgfQrYCjYF/password
 ```
 With that we have the password of the next level!
 ***
-[next level](../../posts/Bandit/bandit_24_25)
+[next level](../../posts/bandit/bandit_24_25)

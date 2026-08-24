@@ -4,8 +4,6 @@ description = "Walkthrough of the Bandit 16 → 17 challenge"
 date = 2026-06-19
 tags = ["bandit", "walkthrough", "linux", "otw"]
 +++
-[previous level <<<](../../posts/Bandit/bandit_15_16)
-
 ### Level Goal
 The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. The task is to first identify which ports are listening, then determine which of those speak SSL/TLS, and finally find the one service that returns the next credentials instead of echoing the input back.
 ### Solution
@@ -45,4 +43,4 @@ Now the correct port will return the RSA key for login into next level.
 
 >It is also a neat reminder that `nc` and `openssl s_client` complement each other well. `nc` is excellent for broad enumeration, while `openssl s_client` is better for interrogating encrypted endpoints in detail.
 ***
-[next level >>>](../../posts/bandit_17_18)
+[next level >>>](../../posts/bandit/bandit_17_18)

@@ -2,10 +2,9 @@
 title = "Bandit 30-31"
 date = 2026-06-19
 +++
-[<< Bandit 29-30](../../posts/Bandit/Bandit/bandit_29_30)
 ### Login 
 password: `qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL`
-
+***
 ### Solution
 
 clone the repo
@@ -52,4 +51,4 @@ That's the password.
 >Tags are easy to overlook because they’re used less frequently in basic workflows.
 ***
 
-[Bandit 31-32>>](../../posts/Bandit/Bandit/bandit_31_32)
+[Bandit 31-32>>](../../posts/bandit/bandit_31_32)

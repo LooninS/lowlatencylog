@@ -3,8 +3,7 @@ title = "Bandit 17 → 18"
 date = 2026-06-19
 description = "There are 2 files in the home directory: passwords.old and passwords.new."
 tags = ["bandit", "linux", "otw", "walkthrough"]
-+++
-[Back to Bandit 16 → 17](../post/Bandit/bandit_16_17)                                                                  
++++                                                               
 ## Level Goal
 There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
 
@@ -22,5 +21,5 @@ From the level goal, we know that the password for the next level is in password
 
 The second line of the output of `diff` is the line that has been changed between the 2 files.
 ***
-[On to Bandit 18 → 19](../post/Bandit/bandit_18_19)
+[On to Bandit 18 → 19](../post/bandit/bandit_18_19)
 

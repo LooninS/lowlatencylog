@@ -4,7 +4,6 @@ description = "Walkthrough of the Bandit 18 → 19 challenge"
 date = 2026-06-19
 tags = ["linux", "walkthrough","bandit","otw"]
 +++
-[Previous level <<](../../posts/Bandit/bandit_17_18)
 ## Level Goal
 The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.
 ***
@@ -36,5 +35,5 @@ appended to the command, separated by spaces, before it is sent to the
 server to be executed.
 ***
 
-[Next level >>](../../posts/Bandit/bandit_19_20)
+[Next level >>](../../posts/bandit/bandit_19_20)
 

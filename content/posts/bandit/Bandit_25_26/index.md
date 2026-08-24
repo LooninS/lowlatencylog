@@ -5,8 +5,6 @@ description = "walkthrough of Bandit 25 → 26"
 tags = ["bandit", "walkthrough", "linux", "otw"]
 
 +++
-[previous level](../../posts/Bandit/bandit_24_25)
-
 ### Login
 
 ssh: `ssh -p 2220 bandit24@bandit.labs.overthewire.org`  
@@ -93,4 +91,4 @@ Then start the shell:
 This drops you into a `/bin/bash` running as `bandit26`. From here you have a normal shell and can explore the level environment just like in any other Bandit level.
 ***
 
-[next level](../../posts/Bandit/bandit_26_27)
+[next level](../../posts/bandit/bandit_26_27)

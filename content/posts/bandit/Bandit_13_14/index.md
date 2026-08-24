@@ -4,8 +4,6 @@ description = "Walkthrough for Bandit 13 to 14"
 date = 2026-06-19
 tags = ["linux","bandit","walkthrough","otw"]
 +++
-[<<< previous level](../../posts/Bandit/bandit_12_13)
-
 ### Login
 ssh: `ssh bandit13@bandit.labs.overthewire.org`
 pass: `FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn`
@@ -36,4 +34,4 @@ Now just login to bandit14 using the key:
 ssh -i sshkey.private bandit14@bandit.labs.overthewire.org
 ```
 
-[next level](../../posts/bandit_14_15)
+[next level](../../posts/bandit/bandit_14_15)

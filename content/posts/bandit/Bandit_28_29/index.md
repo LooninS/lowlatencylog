@@ -4,9 +4,6 @@ date = 2026-06-19
 description = "Walkthrough of Bandit 28 → 29"
 tags = ["bandit", "walkthrough", "linux", "otw", "git"]
 +++
-
-[previous level](../../posts/Bandit/bandit_27_28)
-
 ## Login Details
 **Password:**`Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN`
 
@@ -156,5 +153,6 @@ The `<password>` in that diff is the password for `bandit29`.
 ***
 >[!info] **Git never forgets by default.**
 >Unless you explicitly rewrite history (e.g., with git filter-branch or git filter-repo), anything you commit (including secrets) can usually be recovered from the log. 
+
 ***
-[next level](../../posts/Bandit/bandit_29_30)
+[next level](../../posts/bandit/bandit_29_30)

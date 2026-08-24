@@ -51,7 +51,7 @@ The mapping works like this:
 
 
 >[!NOTE]
->ROT13 is often introduced as a toy cipher because it >is easy to reverse and simple to recognize. In this level, the key idea is not cryptography strength but being comfortable with small Unix text-processing tools.
+>ROT13 is often introduced as a toy cipher because it's easy to reverse and simple to recognize. In this level, the key idea is not cryptography strength but being comfortable with small Unix text-processing tools.
 ***
 
-[next level](../../posts/Bandit/bandit_12_13)
+[next level](../../posts/bandit/bandit_12_13)

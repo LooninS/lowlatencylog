@@ -89,6 +89,7 @@ rm -rf "$WORKDIR"
 # file -b: prints filetype without filename
 # grep -q: doesn't print anything to stdout
 ```
+
 > [!NOTE]  
 > **Bandit doesn't allow executing arbitrary code in `home` or other restricted directories.**
 > To run the script:
@@ -99,6 +100,6 @@ rm -rf "$WORKDIR"
 >```
 ***
 
-[Bandit 13 to 14](../../posts/Bandit/bandit_13_14)
+[Bandit 13 to 14](../../posts/bandit/bandit_13_14)
 
 

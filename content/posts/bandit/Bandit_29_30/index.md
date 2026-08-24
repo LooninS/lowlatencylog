@@ -4,9 +4,6 @@ date = 2026-06-19
 description = "Walkthrough of Bandit 29 → 30"
 tags = ["bandit", "walkthrough", "linux", "otw", "git"]
 +++
-
-[previous level](../../posts/Bandit/bandit_28_29)
-
 ## Login Details
 
 **Password:** `4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7`

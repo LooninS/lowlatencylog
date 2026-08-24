@@ -3,10 +3,10 @@ title = "Bandit 31 -> 32"
 date = 2026-06-20
 tags = ["bandit", "otw", "linux"]
 +++
-[previous level](../../posts/Bandit/bandit_30_31)
-pass: `fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy`
+# login
+SSH: We don't need SSH for this level!
+password: `fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy`
 ***
-
 ### level goal
 
 There is a git repository at ssh://bandit31-git@bandit.labs.overthewire.org/home/bandit31-git/repo via the port 2220. The password for the user bandit31-git is the same as for the user bandit31.
@@ -34,7 +34,7 @@ cat README.md
    5 │     Content: 'May I come in?'
    6 │     Branch: master
    7 │ 
-─────┴──────────────────────────────────────────────────────────────────
+─────┴─────────────────────────────────────────────────────
 ```
 
 So this level flips the usual pattern. Instead of pulling secrets, we need to push something valid to the remote.
@@ -71,5 +71,5 @@ On push, it asks for the password for bandit31-git (same as bandit31). After aut
 
 After entering the password, we get the password needed for the next level.
 ***
-[next level](../../posts/Bandit/bandit_32_33)
+[next level](../../posts/bandit/bandit_32_33)
 
