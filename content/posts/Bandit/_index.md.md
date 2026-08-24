@@ -1,8 +1,8 @@
 +++
-title = "Natas"
+title = "Bandit"
 description = "Solutions to OTW Bandit."
 summary = "Level-by-level notes, dead ends, observations, and solutions from my Bandit practice."
-date = 2026-06-21
+date = 2026-08-24
 +++
 This section is my running devlog for the **Bandit** wargame.
 
