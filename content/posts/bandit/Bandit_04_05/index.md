@@ -48,4 +48,4 @@ Now, let’s use `cat` to view the contents of the human-readable file:
 bandit4@bandit:~$ cat inhere/-file07
 ```
 ---
-[Next Level](../../posts/Bandit/bandit_05_06/)
+[Next Level](../../posts/bandit/bandit_05_06/)

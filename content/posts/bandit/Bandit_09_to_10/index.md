@@ -30,4 +30,4 @@ bandit9@bandit:~$ strings data.txt | grep '==='
 ## Key Concepts
 - **Filtering Output with `grep`**: Combining `strings` with `grep` allows for efficient filtering of potentially large outputs, helping to pinpoint relevant information based on specific patterns.
 ---
-[next level](../../posts/Bandit/bandit_10_11/)
+[next level](../../posts/bandit/bandit_10_11/)
