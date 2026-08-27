@@ -4,6 +4,7 @@ date = 2026-08-24
 description = "Linear regression from pure mathematics: model, cost function, and gradient descent from scratch."
 tags = ["ML-from-scratch", "linear-regression", "gradient-descent", "math"]
 categories = ["Machine-Learning"]
+math = true
 +++
 
 Machine Learning works by training a set of parameters and using them to predict future data. But what are these parameters and how  do they work? Why are there so many of these algorithms?
