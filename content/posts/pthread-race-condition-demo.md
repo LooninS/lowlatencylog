@@ -120,12 +120,12 @@ If the CPU interrupts the copy **in the middle**, the string is **partially upda
 
 This is what we call a **data race**:
 
-| Problem | Explanation |
-|---------|-------------|
+| Problem                    | Explanation                                         |
+| -------------------------- | --------------------------------------------------- |
 | **Multiple threads write** | 4 threads writing to `shared_string` simultaneously |
-| **Main thread reads** | `fprintf()` reads while writers modify |
-| **No synchronization** | No mutex, no atomic, no barrier |
-| **Non-atomic operation** | `strncpy` = many instructions, not 1 |
+| **Main thread reads**      | `fprintf()` reads while writers modify              |
+| **No synchronization**     | No mutex, no atomic, no barrier                     |
+| **Non-atomic operation**   | `strncpy` = many instructions, not 1                |
 
 
 **Definition:** A data race is a software bug that occurs when the program's outcome depends on the **unpredictable order** in which multiple threads/processes access and modify shared resources.
@@ -143,11 +143,11 @@ ERROR 217102089: Algorithms are the baccritical in low-level system programming.
 
 The number is the **line number** in `shared_string.txt`.
 
-| Metric | Value |
-|--------|-------|
+| Metric               | Value                    |
+| -------------------- | ------------------------ |
 | Corruption frequency | ~1 per 100 million lines |
-| Total lines written | 250,000,000 |
-| Observable races | 2 |
+| Total lines written  | 250,000,000              |
+| Observable races     | 2                        |
 
 Looking at this data one might think big deal, there is a small error once every 100M lines, and sure it might not be a big deal here next post I will demostrate how this can actually change the final result we want.
 ***
