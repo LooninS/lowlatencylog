@@ -120,7 +120,7 @@ $$
 
 These are the graphs of the two functions:
 
-![Binary cross-entropy loss](./matplotlib-bin-ent.png)
+![Binary cross-entropy loss](matplotlib-bin-ent.png)
 
 If $y_i=1$ and the model predicts $0.1$, then
 
