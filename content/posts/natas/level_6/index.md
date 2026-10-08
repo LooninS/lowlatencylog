@@ -5,10 +5,6 @@ description = "Natas Level 6: finding the secret through an exposed include file
 tags = ["otw", "natas", "web security", "file inclusion", "secrets"]
 +++
 
-Here’s a devlog‑style rewrite of your Level 6 post that keeps the technical content but reads more like a personal log and less like a repeated explanation.
-
----
-
 ## Natas 6 – devlog
 
 This level presents a simple form: enter a “secret”, hit submit, and if it matches the server’s value, you get the natas7 password.
