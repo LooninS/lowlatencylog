@@ -4,23 +4,37 @@ date = 2026-06-25
 description = "Natas Level 5: cookies"
 tags = ["otw", "natas", "web security", "cookies"]
 +++
-[previous level <<<](../level_4)
 
-# Natas Level 5: cookies
-The page initially displays only an access-restricted message.
+## Natas 5 – devlog
+
+The page loads with a simple “access restricted” message and nothing else.
 
 ![Hint](./hint.png)
 
-Inspecting the HTTP request reveals a cookie named `loggedin` with the value `0`. This is a client-controlled state variable, which means the server is trusting mutable input from the browser to determine whether the user is authenticated.
+Digging into the HTTP request, I spot a cookie:
 
-Initially, the client sends a request to the server:
+```text
+loggedin=0
+```
+
+That looks like a boolean flag the server uses to decide whether I’m authenticated. In other words, the site is storing auth state in a client‑controlled cookie.
+
+Initial request from the browser:
 
 ![Request](./req.png)
 
-Since cookies can be modified before a request is sent, I changed `loggedin=0` to `loggedin=1` and resent the request. The server accepted the altered value and returned the password.
+Since cookies are under my control, I edit the request and change:
+
+```text
+loggedin=0 → loggedin=1
+```
+
+Then resend:
 
 ![New Request](./new_req.png)
 
->Never trust user input.
+The server accepts `loggedin=1` as “authenticated” and immediately returns the password for the next level.
+
 ---
+
 [next level >>>](../level_6)

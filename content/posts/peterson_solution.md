@@ -32,7 +32,7 @@ void *increment(void *arg) {
 
 Here, `counter++` is the critical section. Multiple threads are trying to increment the same variable at the same time.
 
->[!Warn]
+> [!Warn]
 > **Even `counter++` is not atomic.** It takes multiple CPU instructions to complete, and the CPU can interrupt execution at any point and switch to another thread.
 
 For example, the CPU might interrupt `counter++` **before** the increment is stored and switch to another thread:
@@ -45,6 +45,7 @@ For example, the CPU might interrupt `counter++` **before** the increment is sto
 This happens unpredictably, and the result varies every time I run the program.
 
 ## Just add another variable
+
 The first approach I tried was to use another variable to prevent the second thread from incrementing the counter while the first thread is still incrementing it.
 
 ```c
@@ -65,7 +66,6 @@ void *increment(void *arg) {
 ```
 
 Here's what I'm trying to do: prevent the second thread from incrementing while the first thread is still in the critical section. The counter can't be incremented while `is_safe` is `false`, so the second thread waits.
-
 
 ### Hey Claude fix all problems in my life
 
@@ -91,18 +91,18 @@ mov     BYTE PTR [is_safe], 1
 
 Here's what can happen:
 
-| Time | Thread 1 | Thread 2 | `is_safe` |
-|------|----------|----------|-----------|
-| t1 | `movzx eax, [is_safe]` (eax=1) | | true |
-| t2 | **INTERRUPTED** (eax still 1) | `movzx eax, [is_safe]` (ebx=1) | true |
-| t3 | | `xor eax, 1` (ebx=0) | true |
-| t4 | | `jne .L3` (loop exits) | true |
-| t5 | | `mov [is_safe], 0` | **false** |
-| t6 | | `counter++` (in critical section) | false |
-| t7 | | **INTERRUPTED** | false |
-| t8 | `xor eax, 1` (eax=0) | | false |
-| t9 | `jne .L3` (loop exits!) | | false |
-| t10| `counter++` (in critical section!) | | false |
+| Time | Thread 1                           | Thread 2                          | `is_safe` |
+| ---- | ---------------------------------- | --------------------------------- | --------- |
+| t1   | `movzx eax, [is_safe]` (eax=1)     |                                   | true      |
+| t2   | **INTERRUPTED** (eax still 1)      | `movzx eax, [is_safe]` (ebx=1)    | true      |
+| t3   |                                    | `xor eax, 1` (ebx=0)              | true      |
+| t4   |                                    | `jne .L3` (loop exits)            | true      |
+| t5   |                                    | `mov [is_safe], 0`                | **false** |
+| t6   |                                    | `counter++` (in critical section) | false     |
+| t7   |                                    | **INTERRUPTED**                   | false     |
+| t8   | `xor eax, 1` (eax=0)               |                                   | false     |
+| t9   | `jne .L3` (loop exits!)            |                                   | false     |
+| t10  | `counter++` (in critical section!) |                                   | false     |
 
 **Two threads in the critical section at the same time. Race condition still happens.**
 
@@ -112,7 +112,7 @@ Peterson's algorithm is a classic solution for **two threads** that uses only sh
 
 ```c
 int turn;           // 0 if thread_0's turn, 1 if thread_1's turn
-bool flag;       // flag[i]==true if thread_i wants to enter[1]
+bool flag[2];       // flag[i]==true if thread_i wants to enter[1]
 
 // Thread i's code:
 flag[i] = true;     // I want to enter
@@ -125,17 +125,20 @@ flag[i] = false;    // I'm done
 By setting `turn = j` first, each thread gives priority to the other. If both want to enter, the one who set `turn` last will wait, ensuring only one enters.
 
 ## Optimizations
+
 This looks perfect, but we're still not done. If we run the program with Peterson's algorithm, we'll still **not get the correct result**.
 
 Our enemies: **Optimizations.**
 
 ### Two Types of Optimizations That Break Peterson's
 
-| Type | What It Does | How It Breaks Peterson's |
-|------|--------------|-------------------------|
-| **Compiler optimizations** | Rearranges instructions for performance | May swap `flag[i] = true` and `turn = j` |
-| **CPU optimizations** | Executes out of order (store buffers, load forwarding) | `flag[i] = true` not visible to other thread immediately |
+| Type                       | What It Does                                           | How It Breaks Peterson's                                 |
+| -------------------------- | ------------------------------------------------------ | -------------------------------------------------------- |
+| **Compiler optimizations** | Rearranges instructions for performance                | May swap `flag[i] = true` and `turn = j`                 |
+| **CPU optimizations**      | Executes out of order (store buffers, load forwarding) | `flag[i] = true` not visible to other thread immediately |
+
 #### Compiler Optimizations
+
 When we write code, each statement expands to multiple CPU instructions, and the compiler may rearrange them:
 
 ```c
@@ -164,10 +167,10 @@ This means even if the compiler doesn't reorder, the CPU might, and `flag[i] = t
 
 ## What I Learned
 
-| Takeaway | Explanation |
-|----------|-------------|
+| Takeaway                          | Explanation                               |
+| --------------------------------- | ----------------------------------------- |
 | **But requires many assumptions** | No compiler reordering, no CPU reordering |
-| **Simple flags don't work** | `is_safe = false` is still shared memory |
+| **Simple flags don't work**       | `is_safe = false` is still shared memory  |
 
 Peterson's algorithm is a beautiful theoretical solution, but in practice, it depend on too many assumptions to work on modern computers
 

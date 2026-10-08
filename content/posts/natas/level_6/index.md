@@ -5,14 +5,22 @@ description = "Natas Level 6: finding the secret through an exposed include file
 tags = ["otw", "natas", "web security", "file inclusion", "secrets"]
 +++
 
-The page source reveals that the challenge hinges on a server-side comparison against a secret value:
+Here’s a devlog‑style rewrite of your Level 6 post that keeps the technical content but reads more like a personal log and less like a repeated explanation.
 
-```html
+---
+
+## Natas 6 – devlog
+
+This level presents a simple form: enter a “secret”, hit submit, and if it matches the server’s value, you get the natas7 password.
+
+The interesting part isn’t the form itself, but the page source. Right at the top, there’s this:
+
+```php
 <?
 include "includes/secret.inc";
 
-if(array_key_exists("submit", $_POST)) {
-    if($secret == $_POST['secret']) {
+if (array_key_exists("submit", $_POST)) {
+    if ($secret == $_POST['secret']) {
         print "Access granted. The password for natas7 is <censored>";
     } else {
         print "Wrong secret";
@@ -21,7 +29,21 @@ if(array_key_exists("submit", $_POST)) {
 ?>
 ```
 
-The critical detail is the `include "includes/secret.inc";` statement. This pulls in a separate file that defines the secret used by the form handler. Since the included file is publicly accessible, I inspected it directly and found:
+So the logic is:
+
+- Include `includes/secret.inc`, which presumably defines `$secret`.
+- On form submit, compare `$secret` with `$_POST['secret']`.
+- If they match, reveal the next password.
+
+That `include` line immediately raises a question: is `includes/secret.inc` itself accessible via HTTP?
+
+Navigating directly to:
+
+```text
+http://natas6.natas.labs.overthewire.org/includes/secret.inc
+```
+
+shows the raw PHP source:
 
 ```php
 <?
@@ -29,14 +51,12 @@ $secret = "FOEIUWGHFEEUHOFUOIU";
 ?>
 ```
 
-Submitting this value through the form satisfies the equality check and returns the password for the next level.
-![Screenshot](screenshot.png)
+Now the solve is trivial:
 
-> [!tip]  
-> This challenge demonstrates a common web security mistake: sensitive values should never be stored in files that are directly reachable from the web root. Even simple application logic can be bypassed if a secret is exposed to the client.
->
->The proper fix is to keep secrets outside the web-accessible directory and load them only on the server side. In general, secrets should be stored in protected configuration files or environment variables, and any exposed secret should be rotated immediately.
+1. Copy the value of `$secret`.
+2. Paste it into the form’s “secret” field.
+3. Submit → server prints the natas7 password.
 
-***
+---
 
-[next page](../level_7)
+[next page](../level_7/index.md)
