@@ -24,7 +24,7 @@ Before we dive into the implementation of KNN, let's understand the use cases of
 What if we have to predict the preference of a new user based on the preferences of other users?
 The data of old user is represented as vectors and we can then use KNN to predict whether the new user should be recommanded the product based on KNN.
 
-![[knn-img.png]]
+![knn example](./knn-img.png)
 
 Apart from recommendation, KNN can be used for clustering. For example, if we have a dataset of customers and we want to group them into segments based on their purchase history, we can use KNN to find the K-nearest neighbors of each customer and group them together.
 
