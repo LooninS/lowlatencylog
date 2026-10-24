@@ -34,4 +34,9 @@ Now just login to bandit14 using the key:
 ssh -i sshkey.private bandit14@bandit.labs.overthewire.org
 ```
 
-[next level](../../posts/bandit/bandit_14_15)
+[next level](../Bandit_14_15/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_12_13/) | [Next level →](../Bandit_14_15/)

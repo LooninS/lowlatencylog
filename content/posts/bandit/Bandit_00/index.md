@@ -73,6 +73,9 @@ This runs:
 bandit1@bandit.labs.overthewire.org -p 2220
 ```
 ---
-*[Level 1](./bandit/bandit_00_01/)*
+*[Level 1](../Bandit_00_01/)*
 
+---
 
+<!-- bandit-navigation -->
+[Next level →](../Bandit_00_01/)

@@ -71,5 +71,9 @@ On push, it asks for the password for bandit31-git (same as bandit31). After aut
 
 After entering the password, we get the password needed for the next level.
 ***
-[next level](../../posts/bandit/bandit_32_33)
+[next level](../Bandit_32_33/)
 
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_30_31/) | [Next level →](../Bandit_32_33/)

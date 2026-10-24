@@ -75,4 +75,9 @@ The password of user bandit25 is <password>
 
 With this we have our password for bandit25.
 ***
-[Next level](../../posts/bandit/bandit_25_26)
+[Next level](../Bandit_25_26/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_23_24/) | [Next level →](../Bandit_25_26/)

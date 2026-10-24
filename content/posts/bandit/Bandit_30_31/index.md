@@ -51,4 +51,9 @@ That's the password.
 >Tags are easy to overlook because they’re used less frequently in basic workflows.
 ***
 
-[Bandit 31-32>>](../../posts/bandit/bandit_31_32)
+[Bandit 31-32>>](../Bandit_31_32/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_29_30/) | [Next level →](../Bandit_31_32/)

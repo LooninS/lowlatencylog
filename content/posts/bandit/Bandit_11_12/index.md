@@ -54,4 +54,9 @@ The mapping works like this:
 >ROT13 is often introduced as a toy cipher because it's easy to reverse and simple to recognize. In this level, the key idea is not cryptography strength but being comfortable with small Unix text-processing tools.
 ***
 
-[next level](../../posts/bandit/bandit_12_13)
+[next level](../Bandit_12_13/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_10_11/) | [Next level →](../Bandit_12_13/)

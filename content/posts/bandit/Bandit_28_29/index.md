@@ -155,4 +155,9 @@ The `<password>` in that diff is the password for `bandit29`.
 >Unless you explicitly rewrite history (e.g., with git filter-branch or git filter-repo), anything you commit (including secrets) can usually be recovered from the log. 
 
 ***
-[next level](../../posts/bandit/bandit_29_30)
+[next level](../Bandit_29_30/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_27_28/) | [Next level →](../Bandit_29_30/)

@@ -33,5 +33,9 @@ Finally, I printed the file contents with:
 ```bash
 bandit0@bandit:~$ cat readme
 ```
-[Next Level](./bandit/bandit_01_02/)
+[Next Level](../Bandit_01_02/)
 
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_00/) | [Next level →](../Bandit_01_02/)

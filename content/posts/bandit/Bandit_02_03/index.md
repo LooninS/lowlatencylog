@@ -51,4 +51,9 @@ Or I could let Tab completion handle the ugly escaping for me:
 bandit2@bandit:~$ cat ./--spaces\ in\ this\ filename--
 ```
 ---
-[Next Level](../../posts/bandit/bandit_03_04/)
+[Next Level](../Bandit_03_04/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_01_02/) | [Next level →](../Bandit_03_04/)

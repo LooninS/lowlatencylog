@@ -91,4 +91,9 @@ Then start the shell:
 This drops you into a `/bin/bash` running as `bandit26`. From here you have a normal shell and can explore the level environment just like in any other Bandit level.
 ***
 
-[next level](../../posts/bandit/bandit_26_27)
+[next level](../Bandit_26_27/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_24_25/) | [Next level →](../Bandit_26_27/)

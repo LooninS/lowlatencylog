@@ -110,4 +110,9 @@ bandit23@bandit:/tmp/tmp.YgfQrYCjYF$ cat /tmp/tmp.YgfQrYCjYF/password
 ```
 With that we have the password of the next level!
 ***
-[next level](../../posts/bandit/bandit_24_25)
+[next level](../Bandit_24_25/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_22_23/) | [Next level →](../Bandit_24_25/)

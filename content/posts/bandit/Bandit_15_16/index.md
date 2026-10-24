@@ -25,5 +25,9 @@ The `-quiet` flag suppresses SSL handshake noise so you only see the server's re
 > `ncat` is Nmap's rewrite of Netcat with SSL/TLS, proxy, and IPv6 support. If it's not available on your system, `openssl s_client` is a reliable fallback.
 ---
 
-[next level >>>](../../posts/bandit/bandit_16_17)
+[next level >>>](../Bandit_16_17/)
 
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_14_15/) | [Next level →](../Bandit_16_17/)

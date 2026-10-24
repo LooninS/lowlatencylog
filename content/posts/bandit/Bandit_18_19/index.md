@@ -35,5 +35,9 @@ appended to the command, separated by spaces, before it is sent to the
 server to be executed.
 ***
 
-[Next level >>](../../posts/bandit/bandit_19_20)
+[Next level >>](../Bandit_19_20/)
 
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_17_18/) | [Next level →](../Bandit_19_20/)

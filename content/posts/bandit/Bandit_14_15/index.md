@@ -18,4 +18,9 @@ So now we can pipe the contents of `/etc/bandit_pass/bandit14` to port 30000 on 
 cat /etc/bandit_pass/bandit14 | nc localhost 30000
 ```
 
-[next level >>>](../../posts/bandit/bandit_15_16)
+[next level >>>](../Bandit_15_16/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_13_14/) | [Next level →](../Bandit_15_16/)

@@ -26,4 +26,9 @@ The `cat` command display all the contents of `data.txt`, then `|` operator take
 - **Piping (`|`)**: This level reinforces the concept of piping the output of one command as the input to another, a fundamental aspect of shell scripting for data processing.
 - **`grep` for Pattern Matching**: The `grep` command is essential for searching and filtering text based on patterns, making it highly useful for extracting specific information from files.
 ---
-[next level](../../posts/bandit/bandit_08_to_09)
+[next level](../Bandit_08_to_09/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_06_to_07/) | [Next level →](../Bandit_08_to_09/)

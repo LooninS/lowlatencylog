@@ -43,4 +43,9 @@ Now the correct port will return the RSA key for login into next level.
 
 >It is also a neat reminder that `nc` and `openssl s_client` complement each other well. `nc` is excellent for broad enumeration, while `openssl s_client` is better for interrogating encrypted endpoints in detail.
 ***
-[next level >>>](../../posts/bandit/bandit_17_18)
+[next level >>>](../Bandit_17_18/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_15_16/) | [Next level →](../Bandit_17_18/)

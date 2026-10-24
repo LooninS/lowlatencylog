@@ -55,4 +55,9 @@ file ownership and permissions: this level highlights the importance of file own
 redirecting output: the 2> /dev/null command is a useful technique for redirecting error messages (stderr) to /dev/null, effectively silencing them and making the output of a command cleaner.
 
 ----
-[next level](../../posts/bandit/bandit_07_to_08/)
+[next level](../Bandit_07_to_08/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_05_06/) | [Next level →](../Bandit_07_to_08/)

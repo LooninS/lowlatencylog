@@ -100,6 +100,9 @@ rm -rf "$WORKDIR"
 >```
 ***
 
-[Bandit 13 to 14](../../posts/bandit/bandit_13_14)
+[Bandit 13 to 14](../Bandit_13_14/)
 
+---
 
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_11_12/) | [Next level →](../Bandit_13_14/)

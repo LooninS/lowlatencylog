@@ -33,4 +33,9 @@ Alternatively, I could also use the option delimiter:
 bandit1@bandit:~$ cat -- -
 ```
 ---
-[next level](../../posts/bandit/bandit_02_03/)
+[next level](../Bandit_02_03/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_00_01/) | [Next level →](../Bandit_02_03/)

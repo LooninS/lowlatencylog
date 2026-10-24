@@ -41,4 +41,9 @@ bandit8@bandit:~$ sort data.txt | uniq -u
 - **Combining `sort` and `uniq`**: To find truly unique lines in a file, `sort` must be used before `uniq` to bring identical lines together.
 - **Piping for sequential processing**: This level further demonstrates the power of piping commands to process data sequentially, where the output of one command becomes the input of the next.
 ***
-[next level](../../posts/bandit/bandit_09_to_10/)
+[next level](../Bandit_09_to_10/)
+
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_07_to_08/) | [Next level →](../Bandit_09_to_10/)

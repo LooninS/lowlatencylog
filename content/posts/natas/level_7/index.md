@@ -44,4 +44,4 @@ made the server include the password file and print its contents in the page bod
 
 ---
 
-[next page](../level_8/index.md)
+[next page](../level_8/)

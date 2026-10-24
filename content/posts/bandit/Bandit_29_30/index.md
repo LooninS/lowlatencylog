@@ -100,5 +100,9 @@ Copy that password and you’re ready for the next level.
 
 ---
 
-[next level](../../posts/Bandit/bandit_30_31)
+[next level](../Bandit_30_31/)
 
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_28_29/) | [Next level →](../Bandit_30_31/)

@@ -55,4 +55,4 @@ Now the solve is trivial:
 
 ---
 
-[next page](../level_7/index.md)
+[next page](../level_7/)

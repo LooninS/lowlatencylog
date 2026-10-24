@@ -21,5 +21,9 @@ From the level goal, we know that the password for the next level is in password
 
 The second line of the output of `diff` is the line that has been changed between the 2 files.
 ***
-[On to Bandit 18 → 19](../post/bandit/bandit_18_19)
+[On to Bandit 18 → 19](../Bandit_18_19/)
 
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_16_17/) | [Next level →](../Bandit_18_19/)

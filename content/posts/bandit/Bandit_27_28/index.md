@@ -4,7 +4,7 @@ date = 2026-06-19
 description = "walkthrough of Bandit 27 → 28"
 tags = ["bandit", "walkthrough", "linux", "otw"]
 +++
-[previous level](../../posts/Bandit/bandit_26_27)
+[previous level](../Bandit_26_27/)
 
 ### Level Goal
 
@@ -28,5 +28,9 @@ cd repo
 cat README
 ```
 ***
-[next level](../../posts/bandit/bandit_28_29) 
+[next level](../Bandit_28_29/)
 
+---
+
+<!-- bandit-navigation -->
+[← Previous level](../Bandit_26_27/) | [Next level →](../Bandit_28_29/)
