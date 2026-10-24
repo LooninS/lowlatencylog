@@ -39,7 +39,7 @@ The `cat` command display all the contents of `data.txt`, then `|` operator take
 
 ---
 
-[next level](../bandit_08_to_09/)
+[next level](../bandit_08_09/)
 
 ---
 

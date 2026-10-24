@@ -73,7 +73,7 @@ redirecting output: the 2> /dev/null command is a useful technique for redirecti
 
 ---
 
-[next level](../bandit_07_to_08/)
+[next level](../bandit_07_08/)
 
 ---
 

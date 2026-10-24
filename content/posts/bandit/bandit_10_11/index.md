@@ -23,4 +23,4 @@ base64 -d data.txt
 ---
 
 <!-- bandit-navigation -->
-[← Previous level](../bandit_09_to_10/) | [Next level →](../bandit_11_12/)
+[← Previous level](../bandit_09_10/) | [Next level →](../bandit_11_12/)
